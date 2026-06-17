@@ -1,4 +1,3 @@
 pyttsx3
-discord
-discord.commands
-tips
+discord.py
+
