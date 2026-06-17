@@ -44,4 +44,4 @@ async def comandos(ctx):
 
 token2 = "Lri04hEnfDn7pztv91AM2YaBZLuGmvVKcPx7fs"
 # Ejecuta el bot con tu token (mantén el token seguro)
-bot.run("MTUxNjQ4MjMxOTkwMzQ5MDE1OQ.GvOiXb."+token2)
+bot.run(""+token2)
