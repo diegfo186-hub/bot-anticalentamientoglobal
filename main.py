@@ -2,12 +2,14 @@ import random
 import pyttsx3
 import discord
 from discord.ext import commands
+from googletrans import Translator
 import tips
 
 engine = pyttsx3.init()
 intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix='!', intents=intents)
+translator = Translator()
 
 # RATE
 engine.setProperty('rate', 150)
@@ -18,6 +20,7 @@ engine.setProperty('volume', 1.0)
 # VOICE
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[0].id)
+language = 'es'  # Idioma predeterminado
 
 
 def get_tip():
@@ -27,7 +30,8 @@ def get_tip():
 @bot.command()
 async def tip(ctx):
     tip = get_tip()
-    await ctx.send(f"**consejo:** {tip}")
+    translated = translator.translate(tip, dest=language)
+    await ctx.send(f"**consejo:** {translated.text}")
 
 
 @bot.command()
@@ -38,10 +42,39 @@ async def comandos(ctx):
         "  Comandos:\n"
         "    !tip - Obtén un consejo ambiental\n"
         "    !comandos - Muestra este mensaje de ayuda\n"
+        "    !lang - Cambia el idioma del bot\n"
+        "    !langlist - Muestra una lista de idiomas disponibles\n"
         "-----------------------------------------------"
     )
 
 
+@bot.command()
+async def langlist(ctx):
+    await ctx.send(
+        "-----------------------------------------------\n"
+        "    Idiomas disponibles:\n"
+        "    es = Español\n"
+        "    en = Inglés\n"
+        "    fr = Francés\n"
+        "    pt = Portugués\n"
+        "    de = Alemán\n"
+        "    it = Italiano\n"
+        "    zh-CN = Chino (Simplificado)\n"
+        "    zh-TW = Chino (Tradicional)\n"
+        "    ja = Japonés\n"
+        "    ko = Coreano\n"
+        "    ar = Árabe\n"
+        "    ru = Ruso\n"
+        "    hi = Hindi\n"
+        "-----------------------------------------------"
+    )
+@bot.command()
+async def lang(ctx, lang_code):
+    global language
+    language = lang_code
+    await ctx.send(f"Idioma cambiado a: {language}")
+
+
 token2 = "Lri04hEnfDn7pztv91AM2YaBZLuGmvVKcPx7fs"
 # Ejecuta el bot con tu token (mantén el token seguro)
-bot.run(""+token2)
+bot.run("MTUxNjQ4MjMxOTkwMzQ5MDE1OQ.GvOiXb."+token2)
