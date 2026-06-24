@@ -75,6 +75,6 @@ async def lang(ctx, lang_code):
     await ctx.send(f"Idioma cambiado a: {language}")
 
 
-token2 = "Lri04hEnfDn7pztv91AM2YaBZLuGmvVKcPx7fs"
+token2 = ""
 # Ejecuta el bot con tu token (mantén el token seguro)
-bot.run("MTUxNjQ4MjMxOTkwMzQ5MDE1OQ.GvOiXb."+token2)
+bot.run(""+token2)
