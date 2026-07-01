@@ -27,6 +27,16 @@ def get_tip():
     return random.choice(tips.TIPS)
 
 
+async def on_ready():
+    print("-----------------------------------------------\n")
+    print("botsito en línea")
+    print(f'Bot conectado como {bot.user.name}')
+    print("Lista de comandos:")
+    for command in bot.commands:
+        print(f"  - {command.name}")
+    print("-----------------------------------------------\n")
+
+
 @bot.command()
 async def tip(ctx):
     tip = get_tip()
@@ -68,6 +78,8 @@ async def langlist(ctx):
         "    hi = Hindi\n"
         "-----------------------------------------------"
     )
+
+
 @bot.command()
 async def lang(ctx, lang_code):
     global language
