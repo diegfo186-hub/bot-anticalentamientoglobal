@@ -1,3 +1,4 @@
+from multiprocessing import process
 import random
 import pyttsx3
 import discord
@@ -10,6 +11,7 @@ intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix='!', intents=intents)
 translator = Translator()
+token = process.env.get('DISCORD_TOKEN')
 
 # RATE
 engine.setProperty('rate', 150)
@@ -87,6 +89,5 @@ async def lang(ctx, lang_code):
     await ctx.send(f"Idioma cambiado a: {language}")
 
 
-token2 = ""
 # Ejecuta el bot con tu token (mantén el token seguro)
-bot.run(""+token2)
+bot.run(token)
