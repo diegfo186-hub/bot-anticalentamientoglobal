@@ -1,4 +1,4 @@
-from multiprocessing import process
+import DToken
 import random
 import pyttsx3
 import discord
@@ -11,7 +11,7 @@ intents = discord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix='!', intents=intents)
 translator = Translator()
-token = process.env.get('DISCORD_TOKEN')
+token = DToken.DISCORD_TOKEN
 
 # RATE
 engine.setProperty('rate', 150)
